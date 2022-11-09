@@ -1,6 +1,6 @@
 package com.demo;
 
-        import com.model.Organize;
+        import com.model.Organization;
         import com.util.OpenConnection;
 
         import javax.servlet.ServletException;
@@ -45,16 +45,16 @@ public class IfClockServlet extends HttpServlet {
             pstmt.setString(1,telphone);
             ResultSet rst = pstmt.executeQuery();
 
-            List<Organize> onulist=new ArrayList<>();
+            List<Organization> onulist=new ArrayList<>();
             while(rst.next()){
-                Organize onu=new Organize();
+                Organization onu=new Organization();
                 onu.setOnumber(rst.getInt(2));
 
                 sql="SELECT * FROM organize where Onumber=?";
                 pstmt = dbconn.prepareStatement(sql);
                 pstmt.setInt(1,onu.getOnumber());
-                rst = pstmt.executeQuery();
-                if(rst.next()){
+                ResultSet rst2 = pstmt.executeQuery();
+                if(rst2.next()){
                 onu.setOname(rst.getString(2));
                 System.out.println(rst.getString(2));}
                 onulist.add(onu);
@@ -72,7 +72,12 @@ public class IfClockServlet extends HttpServlet {
         }
 
     }
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doPost(request,response);
 
+    }
 
 
     @Override

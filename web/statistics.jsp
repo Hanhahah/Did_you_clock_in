@@ -1,13 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: senlan
-  Date: 2022/11/8
-  Time: 17:43
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.*,com.model.Organization"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%@ page contentType="text/html; charset=utf-8" %>
+<!--<![endif]--><!-- Begin Head -->
 <!DOCTYPE html><!--[if IE 8]><html lang="en" class="ie8 no-js"><![endif]--><!--[if IE 9]><html lang="en" class="ie9 no-js"><![endif]--><!--[if!IE]><!-->
 <html lang="zxx">
 <!--<![endif]--><!-- Begin Head -->
@@ -113,45 +106,48 @@
         <div class="main-content"><!-- Page Title Start -->
             <div class="rg_center">
                 <div class="card-header">
-                    <h4 class="card-title mb-0">今日打卡</h4>
+                    <h4 class="card-title mb-0">统计信息</h4>
                     <div class="card-options"><a class="card-options-collapse" href="javascript:;" data-bs-toggle="card-collapse" data-bs-original-title="" title=""><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="javascript:;" data-bs-toggle="card-remove" data-bs-original-title="" title=""><i class="fe fe-x"></i></a></div>
                 </div>
                 <div class="card-body">
-                    <form action="clockServlet" method="post">
-                           <div class="mb-3">
-                                <label class="form-label">今日所在地</label>
-                                <input class="form-control"  name="location">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">今日健康码二维码状态</label>
-                                <input class="form-control" name="helthcode">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">今日行程码状态</label>
-                                <input class="form-control"	name="tripcode">
-                            </div>
-                             <div class="mb-3">
-                                 <label class="form-label">核酸报告结果</label>
-                                 <input class="form-control"	name="NATresult">
-                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">选择组织</label>
-                            </div>
-                        <c:forEach var="onu" items="${onulist}">
-                            <div class="checkbox">
-
-                                <input id="checkbox${onu.onumber}" type="checkbox" name="Onumber" value="${onu.onumber}">
-                                <label for="checkbox${onu.onumber}">${onu.oname}</label>
-                            </div>
-                        </c:forEach>
-
-
-                        <div class="form-footer">
-                            <button type="submit" class="btn btn-primary squer-btn" data-bs-original-title="" title="">Save</button>
+                    <form action = "SelectStasServlet" method="post">
+                        <%int onumber;
+                        if(request.getParameter("onumber")!=null)
+                        {onumber = Integer.parseInt(request.getParameter("onumber"));}
+                        else{
+                        onumber = (int) request.getAttribute("onumber");}
+                        request.getSession().setAttribute("onumber",onumber);
+                        %>
+                        <div class="mb-3">
+                            <label class="form-label">查询日期：</label>
+                            <input class="form-control" type="date" required="required" name="searchdate" onblur="checkdate()" >
+                            <input type = "submit" value = "查询" class="btn btn-primary squer-btn">
                         </div>
                     </form>
+                    <%
+                    int[]stas = (int[]) request.getSession().getAttribute("stas");
+                    %>
+                    <table id="table" class="mb-3" >
+						<tr class="mb-3">
+							<td >应打卡人数</td>
+							<td>未打卡人数</td>
+							<td>绿码人数</td>
+							<td>黄码人数</td>
+							<td>红码人数</td>
+						</tr>
+						<c:forEach var="stas" items="${stas}">
+							<tr>
+								<td>${stas[0]}</td>
+								<td>${stas[1]}</td>
+								<td>${stas[2]}</td>
+								<td>${stas[3]}</td>
+								<td>${stas[4]}</td>
+							</tr>
+						</c:forEach>
+						</table>     
                 </div>
             </div>
+
             <!-- Products view Start -->
             <div class="ad-footer-btm">
                 <p>Copyright 2021 © SplashDash All Rights By <a href="www.jq22.com/index.html">jq22</a>.</p>

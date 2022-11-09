@@ -40,7 +40,7 @@
 <div class="page-wrapper"><!-- Header Start -->
     <header class="header-wrapper main-header">
         <div class="header-inner-wrapper">
-            <div class="logo-wrapper"><a href="IfClockServlet" class="admin-logo"><img src="assets/images/logo.png" alt=""></a></div>
+            <div class="logo-wrapper"><a href="if_clockServlet" class="admin-logo"><img src="assets/images/logo.png" alt=""></a></div>
 
         </div>
     </header>
@@ -55,7 +55,7 @@
           </svg>
           </span><span class="menu-text">打卡 </span></a>
                     <ul class="sub-menu">
-                        <li><a href="IfClockServlet"><span class="icon-dash"></span><span class="menu-text">今日打卡 </span></a></li>
+                        <li><a href="if_clockServlet"><span class="icon-dash"></span><span class="menu-text">今日打卡 </span></a></li>
                         <li><a href="detailServlet"><span class="icon-dash"></span><span class="menu-text">打卡详情 </span></a></li>
                     </ul>
                 </li>
@@ -67,18 +67,18 @@
           </svg>
           </span><span class="menu-text">加入/创建组织</span></a>
                     <ul class="sub-menu">
-                        <li><a href="join.html"><span class="icon-dash"></span><span class="menu-text">加入组织 </span></a></li>
-                        <li><a href="create.html"><span class="icon-dash"></span><span class="menu-text">创建组织 </span></a></li>
+                        <li><a href="join.jsp"><span class="icon-dash"></span><span class="menu-text">加入组织 </span></a></li>
+                        <li><a href="CreateServlet"><span class="icon-dash"></span><span class="menu-text">创建组织 </span></a></li>
                     </ul>
                 </li>
-                <li><a href="org-list.html"><span class="icon-menu feather-icon">
+                <li><a href="SelectOrgServlet"><span class="icon-menu feather-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-wind">
             <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path>
           </svg>
           </span><span class="menu-text">我创建的 </span></a>
 
                 </li>
-                <li><a href="org-out.html"><span class="icon-menu feather-icon">
+                <li><a href="MyjoinServlet"><span class="icon-menu feather-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send">
             <line x1="22" y1="2" x2="11" y2="13"></line>
             <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
@@ -86,7 +86,7 @@
           </span><span class="menu-text">我加入的 </span></a>
 
                 </li>
-                <li><a href="mail.html"><span class="icon-menu feather-icon">
+                <li><a href="inboxServlet"><span class="icon-menu feather-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package">
             <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
             <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>

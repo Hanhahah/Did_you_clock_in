@@ -1,22 +1,32 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
 package com.model;
 
-/**
- * @author hu
- * @date 2022/11/9
- */
 public class Organize {
-    private int onumber;
-    private String oname;
-    public int getOnumber() {
-        return onumber;
+    private int orgNum;
+    private String orgName;
+
+    public Organize() {
     }
-    public void setOnumber(int onumber) {
-        this.onumber = onumber;
+
+    public int getOrgNum() {
+        return this.orgNum;
     }
-    public String getOname() {
-        return oname;
+
+    public void setOrgNum(int orgNum) {
+        this.orgNum = orgNum;
     }
-    public void setOname(String oname) {
-        this.oname = oname;
+
+    public String getOrgName() {
+        return this.orgName;
     }
+
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
+    }
+
+
 }

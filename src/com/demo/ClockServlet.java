@@ -88,7 +88,7 @@ public class ClockServlet extends HttpServlet {
                 ResultSet rs = pstmt.executeQuery();
                if (rs.next()){
                    System.out.println(o);
-                    java.sql.Date report=rs.getDate(5);
+                    java.sql.Time report=rs.getTime(5);
                    java.util.Date getdate =new java.util.Date(report.getTime());
                        Date date1 = df.parse(time.format(formatter1));
                        if (date1.getTime() <= getdate.getTime()) {
@@ -106,12 +106,14 @@ public class ClockServlet extends HttpServlet {
                            pstmt.setString(6, tripcode);
                            pstmt.setString(7, natresult);
                            int num = pstmt.executeUpdate();
+
+
                            if (num != 0) {
-                               request.getRequestDispatcher("index.jsp").forward(request, response);
                                System.out.println("成功了");
                            } else {
                                System.out.println("失败了");
                            }
+                           response.sendRedirect("/test1_war_exploded/index.jsp");
                        }
 
                 }

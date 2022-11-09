@@ -1,7 +1,7 @@
 package com.demo;
 
 import com.model.Clockin;
-import com.model.Organize;
+import com.model.Organization;
 import com.util.OpenConnection;
 
 import javax.servlet.ServletException;
@@ -50,9 +50,9 @@ public class MyjoinServlet extends HttpServlet {
                 pstmt = dbconn.prepareStatement(sql1);
                 pstmt.setString(1, telphone);
                 ResultSet rs1 = pstmt.executeQuery();
-                List<Organize> joinlist = new ArrayList<>();
+                List<Organization> joinlist = new ArrayList<>();
                 while (rs1.next()) {
-                    Organize join = new Organize();
+                    Organization join = new Organization();
                     join.setOnumber(rs1.getInt(2));
                     sql1 = "SELECT * FROM organize where Onumber=?";
                     pstmt = dbconn.prepareStatement(sql1);

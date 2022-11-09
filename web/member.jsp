@@ -1,13 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: senlan
-  Date: 2022/11/8
-  Time: 17:43
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.*,com.model.Organization"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html><!--[if IE 8]><html lang="en" class="ie8 no-js"><![endif]--><!--[if IE 9]><html lang="en" class="ie9 no-js"><![endif]--><!--[if!IE]><!-->
+<html lang="zxx">
+<%@ page contentType="text/html; charset=utf-8" %>
+<!--<![endif]--><!-- Begin Head -->
 <!DOCTYPE html><!--[if IE 8]><html lang="en" class="ie8 no-js"><![endif]--><!--[if IE 9]><html lang="en" class="ie9 no-js"><![endif]--><!--[if!IE]><!-->
 <html lang="zxx">
 <!--<![endif]--><!-- Begin Head -->
@@ -111,45 +106,52 @@
     <!-- Container Start -->
     <div class="page-wrapper">
         <div class="main-content"><!-- Page Title Start -->
-            <div class="rg_center">
-                <div class="card-header">
-                    <h4 class="card-title mb-0">今日打卡</h4>
-                    <div class="card-options"><a class="card-options-collapse" href="javascript:;" data-bs-toggle="card-collapse" data-bs-original-title="" title=""><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="javascript:;" data-bs-toggle="card-remove" data-bs-original-title="" title=""><i class="fe fe-x"></i></a></div>
-                </div>
-                <div class="card-body">
-                    <form action="clockServlet" method="post">
-                           <div class="mb-3">
-                                <label class="form-label">今日所在地</label>
-                                <input class="form-control"  name="location">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">今日健康码二维码状态</label>
-                                <input class="form-control" name="helthcode">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">今日行程码状态</label>
-                                <input class="form-control"	name="tripcode">
-                            </div>
-                             <div class="mb-3">
-                                 <label class="form-label">核酸报告结果</label>
-                                 <input class="form-control"	name="NATresult">
-                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">选择组织</label>
-                            </div>
-                        <c:forEach var="onu" items="${onulist}">
-                            <div class="checkbox">
-
-                                <input id="checkbox${onu.onumber}" type="checkbox" name="Onumber" value="${onu.onumber}">
-                                <label for="checkbox${onu.onumber}">${onu.oname}</label>
-                            </div>
-                        </c:forEach>
-
-
-                        <div class="form-footer">
-                            <button type="submit" class="btn btn-primary squer-btn" data-bs-original-title="" title="">Save</button>
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card chart-card">
+                        <div class="card-header">
+                            <h4>管理成员</h4>
                         </div>
-                    </form>
+                        <br>
+                        <div class="col top-action-left">
+                            <form action = "SelectMemberServlet" method="post">
+                            <div class="btn-group dropdown-action mail-search">
+                                <input type="text" placeholder="Search Messages" class="form-control search-message" name="username">
+                                <input type = "submit" value = "查询" class="btn btn-primary squer-btn">
+                            </div>
+                            </form>
+
+                        </div>
+                        <div class="card-body pb-4">
+                            <div class="chart-holder">
+                                <div class="table-responsive">
+                                    <table class="table table-styled mb-0">
+                                        <thead>
+                                        <tr>
+                                            <th> </th>
+                                            <th>成员姓名</th>
+                                            <th>手机号码</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <c:forEach var="u" items="${user_list}">
+                                        <tr>
+                                            <td><div class="checkbox">
+                                                <input id="checkbox2" type="checkbox">
+                                                <label for="checkbox2"></label>
+                                            </div></td>
+                                            <td><span class="img-thumb "><img src="assets/images/table/1.jpg" alt=" "><span class="ml-2 ">${u.username}</span></span></td>
+                                            <td>${u.tel}</td>
+                                            <td><a href="DeleteMemberServlet?tel=${u.tel}"><button class="mb-0 badge badge-primary" >移除</button></a></td>
+                                        </tr>
+                                        </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- Products view Start -->
